@@ -3,117 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prince's Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <title>Prince - Computer Engineer & Full Stack Developer</title>
+    <link rel="icon" type="image/x-icon" href="https://icons.getbootstrap.com/assets/icons/code-slash.svg">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body {
-            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        .gradient-text {
+        .text-gradient {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         .card-hover {
             transition: all 0.3s ease;
         }
         .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-dark text-light font-sans">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm fixed w-full z-10">
+    <nav class="fixed w-full z-50 bg-dark/90 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <span class="text-xl font-semibold gradient-text">Ikechukwu Princewill</span>
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-heading font-bold text-gradient">Prince</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-primary transition-colors">Home</a>
+                    <a href="#about" class="hover:text-primary transition-colors">About</a>
+                    <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+                    <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-purple-600 transition-colors">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-purple-600 transition-colors">About</a>
-                    <a href="#skills" class="text-gray-700 hover:text-purple-600 transition-colors">Skills</a>
-                    <a href="#projects" class="text-gray-700 hover:text-purple-600 transition-colors">Projects</a>
-                    <a href="#contact" class="text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
-                </div>
-                <div class="flex md:hidden items-center">
-                    <button id="menu-btn" class="text-gray-700">
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-light">
                         <i data-feather="menu"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Home</a>
-                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-purple-600">About</a>
-                <a href="#skills" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Skills</a>
-                <a href="#projects" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Projects</a>
-                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-dark/95 backdrop-blur-lg border-t border-slate-800">
+            <div class="px-4 py-6 space-y-4">
+                <a href="#home" class="block py-2 hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="block py-2 hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="block py-2 hover:text-primary transition-colors">Skills</a>
+                <a href="#projects" class="block py-2 hover:text-primary transition-colors">Projects</a>
+                <a href="#contact" class="block py-2 hover:text-primary transition-colors">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center gradient-bg text-white pt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">HI, I'm <span class="text-white">Prince</span></h1>
-                    <p class="text-xl md:text-2xl mb-8 opacity-90">A Computer Engineer & Full Stack Developer passionate about creating innovative digital solutions and bringing ideas to life through code.</p>
-                    <div class="flex space-x-4">
-                        <a href="#projects" class="bg-white text-purple-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">View My Work</a>
-                        <a href="#contact" class="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-purple-600 transition-colors">Contact Me</a>
-                    </div>
-                </div>
-                <div data-aos="fade-left" class="flex justify-center">
-                    <div class="w-64 h-64 md:w-80 md:h-80 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                        <i data-feather="code" class="w-32 h-32 md:w-40 md:h-40"></i>
-                    </div>
-                </div>
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="absolute inset-0 gradient-bg opacity-10"></div>
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary rounded-full filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10" data-aos="fade-up">
+            <h1 class="text-5xl md:text-7xl font-heading font-bold mb-6">
+                Hi, I'm <span class="text-gradient">Prince</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto">
+                Computer Engineer & Full Stack Developer crafting digital experiences that stand out
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#projects" class="px-8 py-3 bg-primary rounded-lg font-medium hover:bg-primary/90 transition-colors">
+                    View My Work
+                </a>
+                <a href="#contact" class="px-8 py-3 border border-primary text-primary rounded-lg font-medium hover:bg-primary/10 transition-colors">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+            <div class="floating">
+                <i data-feather="chevron-down" class="w-8 h-8 text-slate-400"></i>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20 bg-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text" data-aos="fade-up">About Me</h2>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">About Me</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+            
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div data-aos="fade-right">
-                    <div class="w-full h-80 rounded-2xl overflow-hidden shadow-lg">
-    <img src="me.jpg" alt="About Me" class="w-full h-full object-cover">
-</div>
+                    <div class="relative">
+                        <div class="w-80 h-80 mx-auto bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                            <div class="w-72 h-72 bg-dark rounded-full flex items-center justify-center">
+                                <i data-feather="code" class="w-32 h-32 text-primary"></i>
+                            </div>
+                        </div>
+                        <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary rounded-full opacity-50 animate-bounce"></div>
+                        <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-secondary rounded-full opacity-50 animate-bounce delay-1000"></div>
+                    </div>
                 </div>
+                
                 <div data-aos="fade-left">
-                    <h3 class="text-2xl font-semibold mb-6">Crafting Digital Experiences</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        I'm a passionate Computer Engineer with expertise in full-stack development, backend architecture, 
-                        and cloud technologies. I love turning complex problems into simple, beautiful, and intuitive solutions.
+                    <h3 class="text-2xl font-heading font-bold mb-6">Crafting Digital Excellence</h3>
+                    <p class="text-slate-300 mb-6">
+                        I'm an aspiring Computer Engineer and Full Stack Developer passionate about creating 
+                        innovative digital solutions. My journey combines a strong foundation in computer engineering 
+                        with modern web development skills, allowing me to approach problems from multiple perspectives.
                     </p>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        With a strong foundation in computer science principles and hands-on experience in modern web technologies, 
-                        I strive to create applications that are not only functional but also provide exceptional user experiences.
+                    <p class="text-slate-300 mb-8">
+                        I'm constantly learning and expanding my skillset, embracing new technologies and methodologies. 
+                        I believe in writing clean, efficient code and creating user experiences that are both functional 
+                        and delightful.
                     </p>
-                    <div class="flex space-x-4">
-                        <div class="bg-purple-100 text-purple-600 px-4 py-2 rounded-lg">JavaScript</div>
-                        <div class="bg-purple-100 text-purple-600 px-4 py-2 rounded-lg">Python</div>
-                        <div class="bg-purple-100 text-purple-600 px-4 py-2 rounded-lg">React</div>
-                        <div class="bg-purple-100 text-purple-600 px-4 py-2 rounded-lg">Node.js</div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <i data-feather="code" class="w-5 h-5 text-primary mr-2"></i>
+                            <span>Full Stack Development</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="cpu" class="w-5 h-5 text-primary mr-2"></i>
+                            <span>Computer Engineering</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="star" class="w-5 h-5 text-primary mr-2"></i>
+                            <span>Quick Learner</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="zap" class="w-5 h-5 text-primary mr-2"></i>
+                            <span>Innovative Solutions</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -121,209 +178,195 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-50">
+    <section id="skills" class="py-20 bg-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text" data-aos="fade-up">My Skills</h2>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Technical Skills</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Frontend -->
-                <div class="bg-white p-6 rounded-xl shadow-sm card-hover" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                        <i data-feather="layout" class="text-purple-600"></i>
+                <!-- Skill Cards -->
+                <div class="bg-slate-900 rounded-xl p-6 card-hover" data-aos="flip-left">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="code" class="w-8 h-8 text-primary"></i>
+                        </div>
+                        <h3 class="font-heading font-bold mb-3">Frontend</h3>
+                        <p class="text-slate-400 text-sm">React, Vue, HTML, CSS, Angular, TypeScript, TailwindCSS</p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Frontend</h3>
-                    <p class="text-gray-600">React, HTML, CSS, JavaScript, TypeScript, TailwindCSS</p>
                 </div>
-                
-                <!-- Backend -->
-                <div class="bg-white p-6 rounded-xl shadow-sm card-hover" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                        <i data-feather="server" class="text-purple-600"></i>
+
+                <div class="bg-slate-900 rounded-xl p-6 card-hover" data-aos="flip-left" data-aos-delay="100">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="server" class="w-8 h-8 text-primary"></i>
+                        </div>
+                        <h3 class="font-heading font-bold mb-3">Backend</h3>
+                        <p class="text-slate-400 text-sm">Node.js, Python, Java, PHP, REST APIs</p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Backend</h3>
-                    <p class="text-gray-600">Node.js, Python, Django, REST APIs, GraphQL, Microservices</p>
                 </div>
-                
-                <!-- Database -->
-                <div class="bg-white p-6 rounded-xl shadow-sm card-hover" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                        <i data-feather="database" class="text-purple-600"></i>
+
+                <div class="bg-slate-900 rounded-xl p-6 card-hover" data-aos="flip-left" data-aos-delay="200">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="database" class="w-8 h-8 text-primary"></i>
+                        </div>
+                        <h3 class="font-heading font-bold mb-3">Database</h3>
+                        <p class="text-slate-400 text-sm">MySQL, MongoDB, PostgreSQL, Redis</p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Database</h3>
-                    <p class="text-gray-600">MongoDB, PostgreSQL, MySQL, Redis, Firebase, ORM/ODM</p>
                 </div>
-                
-                <!-- DevOps -->
-                <div class="bg-white p-6 rounded-xl shadow-sm card-hover" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                        <i data-feather="cloud" class="text-purple-600"></i>
+
+                <div class="bg-slate-900 rounded-xl p-6 card-hover" data-aos="flip-left" data-aos-delay="300">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="cloud" class="w-8 h-8 text-primary"></i>
+                        </div>
+                        <h3 class="font-heading font-bold mb-3">DevOps</h3>
+                        <p class="text-slate-400 text-sm">AWS, Docker, Kubernetes, CI/CD</p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">DevOps</h3>
-                    <p class="text-gray-600">Docker, Kubernetes, AWS, GCP, CI/CD, Git, Linux</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-white">
+    <section id="projects" class="py-20 bg-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text" data-aos="fade-up">Featured Projects</h2>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Featured Projects</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-gray-50 rounded-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-48 bg-gradient-to-br from-purple-400 to-blue-400 flex items-center justify-center">
-                        <i data-feather="briefcase" class="w-16 h-16 text-white"></i>
+                <!-- Project Cards -->
+                <div class="bg-dark rounded-xl overflow-hidden card-hover" data-aos="zoom-in">
+                    <div class="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                        <i data-feather="layout" class="w-16 h-16 text-white"></i>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Express Elevators Website</h3>
-                        <p class="text-gray-600 mb-4"> A responsive company website for Express Elevators, built with HTML, CSS, and JavaScript</p>
-                        <div class="flex space-x-2">
-                            <span class="text-sm bg-purple-100 text-purple-600 px-2 py-1 rounded">HTML</span>
-                            <span class="text-sm bg-purple-100 text-purple-600 px-2 py-1 rounded">CSS</span>
-                            <span class="text-sm bg-purple-100 text-purple-600 px-2 py-1 rounded">JavaScript</span>
+                        <h3 class="font-heading font-bold text-xl mb-2">Express Elevators website</h3>
+                        <p class="text-slate-400 mb-4">A responsive company website for Express Elevators</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">React</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">File handler.php</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">tailswind</span>
                         </div>
+                     <a href="https://github.com/princeiek12345-commits/smart_water_dispenser" 
+                               target="_blank" 
+                                 class="text-primary hover:text-primary/80 flex items-center">
+                                    View Project 
+                      <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                    </a>
+
                     </div>
                 </div>
-                
-                <!-- Project 2 -->
-                <div class="bg-gray-50 rounded-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-48 bg-gradient-to-br from-green-400 to-blue-400 flex items-center justify-center">
-                        <i data-feather="message-square" class="w-16 h-16 text-white"></i>
+
+                <div class="bg-dark rounded-xl overflow-hidden card-hover" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="h-48 bg-gradient-to-br from-secondary to-purple-600 flex items-center justify-center">
+                        <i data-feather="smartphone" class="w-16 h-16 text-white"></i>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Real-time Chat App</h3>
-                        <p class="text-gray-600 mb-4">Currently exploring Node.js, Express, and Socket.io to build a real-time chat application</p>
-                        <div class="flex space-x-2">
-                            <span class="text-sm bg-purple-100 text-purple-600 px-2 py-1 rounded">Vue.js</span>
-                            <span class="text-sm bg-purple-100 text-purple-600 px-2 py-1 rounded">Socket.io</span>
-                            <span class="text-sm bg-purple-100 text-purple-600 px-2 py-1 rounded">Express</span>
+                        <h3 class="font-heading font-bold text-xl mb-2">Real-time Chat App</h3>
+                        <p class="text-slate-400 mb-4">Currently exploring Node.js, Express, and Socket.io to build a real-time chat application</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">Vue.js</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">Socket.io</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">Express</span>
                         </div>
+                        
                     </div>
                 </div>
-                
-                <!-- Project 3 -->
-                <div class="bg-gray-50 rounded-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="300">
-                    <div class="h-48 bg-gradient-to-br from-orange-400 to-red-400 flex items-center justify-center">
+
+                <div class="bg-dark rounded-xl overflow-hidden card-hover" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="h-48 bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
                         <i data-feather="bar-chart" class="w-16 h-16 text-white"></i>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Data Analytics Dashboard</h3>
-                        <p class="text-gray-600 mb-4">Planning to build a dashboard for data visualization and analytics</p>
-                        <div class="flex space-x-2">
-                            <span class="text-sm bg-purple-100 text-purple-600 px-2 py-1 rounded">React</span>
-                            <span class="text-sm bg-purple-100 text-purple-600 px-2 py-1 rounded">D3.js</span>
-                            <span class="text-sm bg-purple-100 text-purple-600 px-2 py-1 rounded">Python</span>
+                        <h3 class="font-heading font-bold text-xl mb-2">A Team Collaboration App</h3>
+                        <p class="text-slate-400 mb-4">Currently engaging in a real-time data visualization dashboard</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">Vue.js</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">D3.js</span>
+                            <span class="px-3 py-1 bg-primary/20 text-primary text-sm rounded-full">Express</span>
                         </div>
+                    
                     </div>
                 </div>
-            </div>
-
-              <!-- Project 4 -->
-                <div class="bg-gray-50 rounded-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-48 bg-gradient-to-br from-purple-400 to-blue-400 flex items-center justify-center">
-                        <i data-feather="briefcase" class="w-16 h-16 text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Smart water Dispenser</h3>
-                        <p class="text-gray-600 mb-4"> Developed a smart water dispensing system using embedded C++ on a microcontroller (Arduino/ESP)</p>
-                        <div class="flex space-x-2">
-                            <span class="text-sm bg-purple-100 text-purple-600 px-2 py-1 rounded">C++</span>
-                            <span class="text-sm bg-purple-100 text-purple-600 px-2 py-1 rounded">Embedded systems debugging</span>
-                            <span class="text-sm bg-purple-100 text-purple-600 px-2 py-1 rounded">prototyping</span>
-                        </div>
-                    </div>
-                </div>
-
-            <div class="text-center mt-12" data-aos="fade-up">
-                <a href="https://github.com/princeiek12345-commits" target="_blank" class="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium">
-                    View more on GitHub
-                    <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
-                </a>
             </div>
         </div>
-
-             
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text" data-aos="fade-up">Get In Touch</h2>
-            <div class="bg-white rounded-2xl shadow-sm p-8" data-aos="fade-up">
-               <form id="contact-form" action="https://formspree.io/f/xjkeozro" method="POST" class="space-y-6">
-    <div class="grid md:grid-cols-2 gap-6">
-        <div>
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
-            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-        </div>
-        <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-        </div>
+    <section id="contact" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Get In Touch</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-heading font-bold mb-6">Let's Work Together</h3>
+                    <p class="text-slate-300 mb-8">
+                        I'm always interested in new opportunities and exciting projects. 
+                        Whether you have a question or just want to say hi, I'll get back to you as soon as possible!
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i data-feather="mail" class="w-5 h-5 text-primary mr-4"></i>
+                            <span>princeiek12345@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="phone" class="w-5 h-5 text-primary mr-4"></i>
+                            <span>+234 7025823790</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="map-pin" class="w-5 h-5 text-primary mr-4"></i>
+                            <span>Abuja,Nigeria</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mt-8">
+                        <a href="https://github.com/princeiek12345-commits" class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors">
+                            <i data-feather="github" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/princewill-ikechukwu-30a91137a/" class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors">
+                            <i data-feather="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left">
+                    <form action="https://formspree.io/f/xjkeozro" method="POST" class="space-y-6">
+    <div>
+        <label for="name" class="block text-sm font-medium mb-2">Name</label>
+        <input type="text" id="name" name="name" required
+            class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
     </div>
     <div>
-        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-        <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+        <label for="email" class="block text-sm font-medium mb-2">Email</label>
+        <input type="email" id="email" name="email" required
+            class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
     </div>
     <div>
-        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"></textarea>
+        <label for="message" class="block text-sm font-medium mb-2">Message</label>
+        <textarea id="message" name="message" rows="4" required
+            class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
     </div>
-    <button type="submit" class="w-full bg-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-purple-700 transition-colors flex items-center justify-center">
-        <i data-feather="send" class="mr-2 w-4 h-4"></i>
+    <button type="submit"
+        class="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
         Send Message
     </button>
 </form>
-                <div id="form-success" class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-lg">
-                    Message sent successfully! I'll get back to you soon.
-                </div>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 mt-16">
-                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i data-feather="mail" class="text-purple-600"></i>
-                    </div>
-                    <h3 class="font-semibold mb-2">Email</h3>
-                    <p class="text-gray-600">princeiek12345@gmail.com</p>
-                </div>
-                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i data-feather="phone" class="text-purple-600"></i>
-                    </div>
-                    <h3 class="font-semibold mb-2">Phone</h3>
-                    <p class="text-gray-600">+2347059541250</p>
-                </div>
-                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i data-feather="map-pin" class="text-purple-600"></i>
-                    </div>
-                    <h3 class="font-semibold mb-2">Location</h3>
-                    <p class="text-gray-600">Nigeria, Abuja</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <span class="text-xl font-semibold">Prince</span>
-                    <p class="text-gray-400 mt-2">Full Stack Developer & Computer Engineer</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="https://github.com/princeiek12345-commits" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                        <i data-feather="github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/princewill-ikechukwu-30a91137a" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                        <i data-feather="linkedin"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Prince. All rights reserved.</p>
-            </div>
+    <footer class="bg-slate-900 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-slate-400">© 2024 Prince. All rights reserved.</p>
         </div>
     </footer>
 
@@ -331,59 +374,41 @@
         // Initialize animations
         AOS.init({
             duration: 1000,
-            once: true
+            once: true,
+            easing: 'ease-out-back'
         });
-
-        // Initialize feather icons
-        feather.replace();
 
         // Mobile menu toggle
         document.getElementById('menu-btn').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
 
-        // Form submission handling
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Simulate form submission
-            const successMessage = document.getElementById('form-success');
-            successMessage.classList.remove('hidden');
-            
-            // Reset form
-            this.reset();
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMessage.classList.add('hidden');
-            }, 5000);
+        // Animate elements on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card-hover').forEach(card => {
+            observer.observe(card);
         });
 
-        // Simple animation on scroll
-        anime({
-            targets: '.gradient-text',
-            backgroundPosition: ['0% 50%', '100% 50%'],
-            easing: 'easeInOutQuad',
-            duration: 2000,
-            loop: true,
-            direction: 'alternate'
-        });
+        // Feather icons
+        feather.replace();
     </script>
 </body>
 </html>
